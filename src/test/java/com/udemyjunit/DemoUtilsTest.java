@@ -1,5 +1,7 @@
 package com.udemyjunit;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,11 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DemoUtilsTest {
 
+    private DemoUtils demoUtils;
+
+    @BeforeEach
+    void setUp(){
+        demoUtils = new DemoUtils();
+        System.out.println("====================================");
+        System.out.println("@Before executes before the executions of each test method.");
+    }
+
+    @AfterEach
+    void afterEach(){
+        System.out.println("Running @AfterEach.");
+    }
+
     @DisplayName("더하기 연산")
     @Test
     void testEqualsAndNotEquals() {
         // given
-        DemoUtils demoUtils = new DemoUtils();
+        System.out.println("Running test: testEqualsAndNotEquals");
 
         int expected = 6;
         int unexpected = 8;
@@ -33,7 +49,7 @@ class DemoUtilsTest {
     @Test
     void testNullAndNotNull() {
         // given
-        DemoUtils demoUtils = new DemoUtils();
+        System.out.println("Running test: testNullAndNotNull");
 
         String str1 = null;
         String str2 = "null이 아니다.";
